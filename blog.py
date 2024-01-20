@@ -13,3 +13,10 @@ def index():
     db = get_db()
     
     return render_template('blog/index.html')
+
+@bp.route('/addlink')
+@login_required
+def addlink():
+    db = get_db()
+    
+    return render_template('blog/addlink.html')

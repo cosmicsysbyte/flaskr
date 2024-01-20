@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w3-bar w3-light-grey">
+  <a href="{{ url_for('blog.index') }}" class="w3-bar-item w3-button">Home</a>
+  <form action="htts://www.google.com/search" method="post" class="w3-right">
+    <input type="text" name="q" class="w3-input w3-bar-item w3-white" placeholder="Search..">
+    <button type="submit" class="w3-bar-item w3-button w3-green">Go</button>
+  </form>
+</div>
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
+  <h3 class="w3-bar-item">Web links
+    <span class="w3-right">
+      <a href="{{ url_for('blog.addlink') }}" class="w3-button w3-tiny">Add</a>
+      <a href="#" class="w3-button w3-tiny">Manage</a>
+    </span>
+  </h3>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+<!-- section2 -->
+<div id="section2" style="margin-left:20%">
+  {% block section2 %} {% endblock %}
+
+{% endblock %}
