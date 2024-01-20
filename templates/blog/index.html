@@ -1,17 +1,25 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
+{% block title %}index{% endblock %}
 
 {% block header %}
-  <h1>{% block title %}Index pages{% endblock %}</h1>
-  {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
+<div class="dropdown">
+  {% if g.user %} <button class="dropbtn w3-blue">{{ g.user['username'] }} </button>
+  <div class="dropdown-content">
+    <a href="#">Change Data</a>
+    <a href="{{ url_for('auth.logout') }}">Log Out</a>
+  </div> {% endif %}
+</div>
 {% endblock %}
 
 {% block content %}
-  
+
+<div class="w3-bar w3-light-grey w3-border">
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <form action="htts://www.google.com/search" method="post" class="w3-right">
+    <input type="text" name="q" class="w3-input w3-bar-item w3-white" placeholder="Search..">
+    <button type="submit" class="w3-bar-item w3-button w3-green">Go</button>
+  </form>
+</div>
+
 {% endblock %}
