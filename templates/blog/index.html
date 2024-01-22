@@ -11,19 +11,18 @@
     </span>
   </h1>
 
-  <div class="w3-card-4">
-    <header class="w3-container w3-light-grey">
-      <h3>John Doe</h3>
-    </header>
-    <div class="w3-container">
-        <p>Bangladesh Army</p>
-        <hr>
-        <p>information about event</p><br>
-    </div>
-    <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
-    </div><br>
+<div class="w3-card-2">
+{% for event in events %}
+  <header class="w3-container w3-light-grey">
+    <h3>{{ event['eventname'] }} of {{ event['organization'] }}</h3>
+  </header>
+  <div class="w3-container">
+      <p>Appication fee : {{ event['fee'] }}/- Taka only.</p>
+      <p>Last Day: {{ event['deadline'] }}</p>
+  </div>
+    <a class="w3-button w3-block w3-grey" href="{{ event['link'] }} " target="_blank">Apply Here .. </a>
+  </div><hr>
+{% endfor %}
 </div>
-
-
 
 {% endblock %}

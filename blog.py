@@ -11,18 +11,19 @@ bp = Blueprint('blog', __name__,)
 @login_required
 def index():
     db = get_db()
-    
-    return render_template('blog/index.html')
+    links = db.execute('SELECT webname, website FROM links').fetchall()
+    events = db.execute('SELECT eventname, organization, link, deadline, fee FROM events').fetchall()
+    return render_template('blog/index.html', links=links, events=events)
 
 @bp.route('/addlink', methods=('GET', 'POST'))
 @login_required
 def addlink():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        webname = request.form['webname']
+        website = request.form['website']
         error = None
 
-        if not title:
+        if not webname:
             error = 'Title is required.'
 
         if error is not None:
@@ -30,11 +31,12 @@ def addlink():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                'INSERT INTO links (webname, website)'
+                ' VALUES (?, ?)',
+                (webname, website)
             )
             db.commit()
+            flash("Web Site saved successfully")
             return redirect(url_for('blog.index'))
 
     return render_template('blog/addlink.html')
@@ -43,11 +45,14 @@ def addlink():
 @login_required
 def addevent():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        event = request.form['event']
+        organization = request.form['organization']
+        weblink = request.form['weblink']
+        deadline = request.form['deadline']
+        fee = request.form['fee']
         error = None
 
-        if not title:
+        if not event:
             error = 'Title is required.'
 
         if error is not None:
@@ -55,11 +60,12 @@ def addevent():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                'INSERT INTO events (eventname, organization, link, deadline, fee)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (event, organization, weblink, deadline, fee)
             )
             db.commit()
+            flash("New Event saved successfully")
             return redirect(url_for('blog.index'))
 
     return render_template('blog/addevent.html')

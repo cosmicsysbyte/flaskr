@@ -4,34 +4,27 @@
 
 {% block section2 %}
 <div class="w3-container">
-  <br><br>
-  {% for message in get_flashed_messages() %}
-  <div class="w3-panel w3-pale-red w3-display-container">
-    <span onclick="this.parentElement.style.display='none'"
-    class="w3-button w3-red w3-display-topright w3-tiny">x</span>
-    <p>{{ message }}</p>
-  </div>
-  {% endfor %}
-  
+  <br>
+
 <form class="w3-container w3-card-4" method="post" style="width: 75%; margin: auto;">
   <h2 class="w3-text-blue">New Event add form</h2>
   <p>
   <label class="w3-text-blue"><b>Event name</b></label>
-  <input class="w3-input w3-border" name="first" type="text"></p>
+  <input class="w3-input w3-border" name="event" id="event" type="text" value="{{ request.form['event'] }}" required></p>
   <p>
   <label class="w3-text-blue"><b>Organization Name</b></label>
-  <input class="w3-input w3-border" name="last" type="text"></p>
+  <input class="w3-input w3-border" name="organization" id="organization" type="text" value="{{ request.form['organization'] }}" required></p>
   <p>
   <label class="w3-text-blue"><b>Weblink</b></label>
-  <input class="w3-input w3-border" name="last" type="text"></p>
+  <input class="w3-input w3-border" name="weblink" id="weblink" type="text" value="{{ request.form['weblink'] }}" require></p>
   <p>
   <label class="w3-text-blue"><b>Deadine</b></label>
-  <input class="w3-input w3-border" name="last" type="text"></p>
+  <input class="w3-input w3-border" name="deadline" id="deadline" type="text" value="{{ request.form['deadline'] }}" require></p>
   <p>
   <label class="w3-text-blue"><b>Fee/Cost</b></label>
-  <input class="w3-input w3-border" name="last" type="text"></p>
+  <input class="w3-input w3-border" name="fee" id="fee" type="text" value="{{ request.form['fee'] }}" require></p>
   <p>
-  <button class="w3-btn w3-blue">Save</button>
+  <button class="w3-btn w3-green" type="submit">Save</button>
   <a href="{{ url_for('blog.index') }}" class="w3-btn w3-red">Close</a></p>
 </form>
 </div>
