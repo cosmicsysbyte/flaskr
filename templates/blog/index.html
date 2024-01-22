@@ -4,13 +4,26 @@
 
 {% block section2 %}
 <div class="w3-container">
-  <h1>Recent Notices and event</h1>
+  <h1>Recent Job and Education Events
+    <span class="w3-right">
+      <a href="{{ url_for('blog.addevent') }}" class="w3-button w3-tiny">Add</a>
+      <a href="#" class="w3-button w3-tiny">Manage</a>
+    </span>
+  </h1>
+
+  <div class="w3-card-4">
+    <header class="w3-container w3-light-grey">
+      <h3>John Doe</h3>
+    </header>
+    <div class="w3-container">
+        <p>Bangladesh Army</p>
+        <hr>
+        <p>information about event</p><br>
+    </div>
+    <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+    </div><br>
 </div>
 
-<div class="w3-container">
-<h2>Sidebar Navigation Example</h2>
-<p>The sidebar with is set with "style="width:25%".</p>
-<p>The left margin of the page content is set to the same value.</p>
-</div>
+
 
 {% endblock %}
