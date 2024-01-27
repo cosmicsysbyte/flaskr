@@ -12,16 +12,13 @@
   </h1>
 
 {% for event in events %}
-<div class="w3-card-2">
-  <header class="w3-container w3-light-grey">
-    <h3>{{ event['eventname'] }} of {{ event['organization'] }}</h3>
-  </header>
-  <div class="w3-container">
-      <p>Appication fee : {{ event['fee'] }}/- Taka only.</p>
-      <p>Last Day: {{ event['deadline'] }}</p>
+<div class="w3-panel w3-card w3-pale-blue">
+    <h4>{{ event['eventname'] }} of {{ event['organization'] }}</h4>
+      <p>Appication fee : {{ event['fee'] }}/- Taka only.
+      <br>Last Day: {{ event['deadline'] }}
+        <a class="w3-button w3-tiny w3-circle w3-green" href="{{ event['link'] }} " target="_blank">Apply Here .. </a>
+      </p>
   </div>
-    <a class="w3-button w3-block w3-grey" href="{{ event['link'] }} " target="_blank">Apply Here .. </a>
-  </div><hr>
 {% endfor %}
 </div>
 
